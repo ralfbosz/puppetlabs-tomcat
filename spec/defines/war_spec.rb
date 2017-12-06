@@ -180,8 +180,6 @@ describe 'tomcat::war', :type => :define do
       'source'         => '/tmp/sample.war',
       'path'           => '/opt/apache-tomcat/webapps2/sample2.war',
       'allow_insecure' => true,
-      'user'           => 'tomcat',
-      'group'          => 'tomcat',
     )
     }
   end
