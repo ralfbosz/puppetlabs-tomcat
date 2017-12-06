@@ -89,8 +89,12 @@ define tomcat::war(
       source         => $war_source,
       path           => "${_deployment_path}/${_war_name}",
       allow_insecure => $allow_insecure,
-      user           => $user,
-      group          => $group,
+    }
+    exec { "tomcat::war ${name}":
+      command     => "chown ${user}:${group} ${_deployment_path}/${_war_name}",
+      path        => $::facts['path'],
+      subscribe   => Archive["tomcat::war ${name}"],
+      refreshonly => true,
     }
   }
 }
